@@ -1,10 +1,14 @@
 {
-  "name": "h3",
+  "name": "@sword-code-practice/h3",
   "version": "0.7.4",
   "description": "Tiny JavaScript Server",
   "repository": "unjs/h3",
   "license": "MIT",
   "sideEffects": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -52,6 +56,20 @@
     "typescript": "latest",
     "unbuild": "latest",
     "vitest": "latest"
+  },
+  "unbuild": {
+    "entries": [
+      "./src/index"
+    ],
+    "outDir": "lib",
+    "declaration": true,
+    "rollup": {
+      "emitCJS": true,
+      "cjsBridge": true,
+      "esbuild": {
+        "target": "node12"
+      }
+    }
   },
   "packageManager": "pnpm@6.32.8"
 }
